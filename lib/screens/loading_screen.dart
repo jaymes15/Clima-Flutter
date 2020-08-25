@@ -34,12 +34,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
     latitude = location.latitude;
     longitude = location.longitude;
     Networking networking = Networking(
-        url: "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&$kApiKey"
+        url: "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&$kApiKey&units=metric"
     );
     var weather = await networking.getWeather();
-    print(weather);
+
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => LocationScreen(),
+      builder: (context) => LocationScreen(weather: weather),
     ));
   }
 
